@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PWEWebShop.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +17,31 @@ namespace PWEWebShop.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string CVR { get; set; }
-        private List<Category> categories;
-        private List<Customer> customers;
+        public List<Category> Categories;
+        public List<Customer> Customers;
 
         //creating the constructor for the Shop class
         public Shop()
         {
-            categories = new List<Category>();
-            customers = new List<Customer>();
+            Categories = new List<Category>();
+            Customers = new List<Customer>();
+        }
+
+        public void AddCustomer (Customer customer)
+        {
+            Customers.Add(customer);
+        }
+
+        public Customer FindCustomer (int Id)
+        {
+            foreach (Customer myFoundCustomer in Customers)
+            {
+                if(myFoundCustomer.Id == Id)
+                {
+                    return myFoundCustomer;
+                }
+            }
+            return null;
         }
     }
 }

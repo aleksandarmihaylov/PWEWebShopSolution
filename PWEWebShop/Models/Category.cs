@@ -8,15 +8,35 @@ namespace PWEWebShop.Models
 {
     public class Category
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        private Shop shop;
-        private List<Product> products;
+        public Shop TheShop;
+        public List<Product> Products;
+        public List<Category> SubCategories { get; set; }
 
-        public Category()
+        public Category(Shop myShop)
         {
-            products = new List<Product>();
+            TheShop = myShop;
+            Products = new List<Product>();
+            SubCategories = new List<Category>();
+        }
+
+        public void AddProduct (Product product)
+        {
+            Products.Add(product);
+        }
+
+        public Product FindProduct (int Id)
+        {
+            foreach (Product myFoundProduct in Products)
+            {
+                if(myFoundProduct.Id == Id)
+                {
+                    return myFoundProduct;
+                }
+            }
+            return null;
         }
     }
 }

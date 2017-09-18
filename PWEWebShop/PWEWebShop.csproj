@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\CategoryRepository.cs" />
+    <Compile Include="DAL\CustomerRepository.cs" />
+    <Compile Include="DAL\ProductRepository.cs" />
+    <Compile Include="DAL\ShopRepository.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />

@@ -8,19 +8,33 @@ namespace PWEWebShop.Models
 {
     public class Product
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public string SKU { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public  string Price { get; set; }
-        private List<Category> categories;
-
-        private Category myCategory;
+        public decimal Price { get; set; }
+        private Category TheCategory { get; set; }
 
         public Product(Category parentCategory)
         {
-            myCategory = parentCategory;
-            categories = new List<Category>();
+            TheCategory = parentCategory;
         }
+
+        //public void AddCategory (Category category)
+        //{
+        //    categories.Add(category);
+        //}
+
+        //public Category FindCategory (int Id)
+        //{
+        //    foreach (Category myFoundCategory in categories)
+        //    {
+        //        if(myFoundCategory.Id == Id)
+        //        {
+        //            return myFoundCategory;
+        //        }
+        //    }
+        //    return null;
+        //}
     }
 }
