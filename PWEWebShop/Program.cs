@@ -12,33 +12,37 @@ namespace PWEWebShop
     {
         static void Main(string[] args)
         {
-            //create the repositories to help us out
-            ShopRepository shopRepository = new ShopRepository();
-            //create the shop
-            Shop myShop = new Shop();
-            //save the sop in the repository
-            shopRepository.Save(myShop);
-            //create some customers
-            Customer customer1 = new Customer(myShop);
-            customer1.Name = "First Customer";
-            customer1.Address = "The street";
-            myShop.Customers.Add(customer1);
-            // Create a category
-            Category shirstsCategory = new Category(myShop);
-            shirstsCategory.Id = 1;
-            shirstsCategory.Name = "Shirts";
-            shirstsCategory.Description = "This is the description";
-            //add it to the shop
-            myShop.Categories.Add(shirstsCategory);
-            //create a new product
-            Product whiteShirt = new Product(shirstsCategory);
-            whiteShirt.Description = "Nice white shirt";
-            whiteShirt.Id = 1;
-            whiteShirt.Name = "White Shity";
-            whiteShirt.Price = 99;
-            whiteShirt.SKU = "WS1234";
-            //add it to the category
-            shirstsCategory.Products.Add(whiteShirt);
+            //test the save category to the database
+            //1. Create a Category Repository
+            CategoryRepository categoryRepository = new CategoryRepository();
+            //2. Create a Category
+            Category category = new Category();
+            //category.Id = 1;
+            category.Name = "Shirts";
+            category.Description = "Fantastic Shirts for everyones";
+            //3. Save/Update the Category through the Category Repository
+            //categoryRepository.SaveCategory(category);
+            //categoryRepository.UpdateCategory(category,2);
+            // Delete the Category through the Category Repository where id is given
+            //categoryRepository.DeleteCategory(1);
+
+            //testing the load all method
+            //List<Category> categories = categoryRepository.LoadAllCategories();
+            //foreach (Category c in categories)
+            //{
+            //    Console.WriteLine("ID= " + c.Id);
+            //    Console.WriteLine("Name= " + c.Name);
+            //    Console.WriteLine("Description = " + c.Description);
+            //    Console.WriteLine("------------------------");
+            //}
+            //Console.ReadLine();
+
+            //testing the load single method
+            Category myReturnedCategory = categoryRepository.LoadCategory(2);
+            Console.WriteLine("ID= " + myReturnedCategory.Id);
+            Console.WriteLine("Name= " + myReturnedCategory.Name);
+            Console.WriteLine("Description = " + myReturnedCategory.Description);
+            Console.ReadLine();
         }
     }
 }

@@ -15,9 +15,9 @@ namespace PWEWebShop.Models
         public List<Product> Products;
         public List<Category> SubCategories { get; set; }
 
-        public Category(Shop myShop)
+        public Category()
         {
-            TheShop = myShop;
+            //TheShop = myShop;
             Products = new List<Product>();
             SubCategories = new List<Category>();
         }
